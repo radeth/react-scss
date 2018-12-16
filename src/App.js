@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './app.scss';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      version: 'one'
+    }
+  }
+  renderSwitch(version){
+    switch(version){
+      case'one':
+        return(
+          <div>version one</div>
+        )
+      break
+      case'two':
+      return(
+        <div>version two</div>
+      )
+      break
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <button onClick={this.versionOne.bind(this)}>version one</button>
+        <button onClick={this.versionTwo.bind(this)}>version two</button>
+        {this.renderSwitch(this.state.version)}
+        
       </div>
     );
   }
+  versionOne() {
+    this.setState({
+      version: 'one'
+    })
+  }
+  versionTwo() {
+    this.setState({
+      version: 'two'
+    })
+  }
+ 
 }
 
 export default App;
